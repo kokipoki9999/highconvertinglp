@@ -264,6 +264,159 @@ function App() {
         </div>
       </section>
 
+      {/* Visual Storytelling Section */}
+      <section 
+        id="visual-story" 
+        data-animate
+        className={`py-20 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden transition-all duration-1000 ${isVisible['visual-story'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              The Journey from 
+              <span className="text-orange-500"> Struggling to Scaling</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Watch how agencies transform their business in just 90 days using our proven system
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline Path */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-red-200 via-yellow-200 to-green-200 transform -translate-y-1/2 rounded-full"></div>
+            <div className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 transform -translate-y-1/2 rounded-full animate-pulse" style={{width: '100%', animation: 'grow 3s ease-in-out infinite'}}></div>
+
+            {/* Story Steps */}
+            <div className="grid lg:grid-cols-4 gap-8 relative z-10">
+              {[
+                {
+                  step: "Day 1",
+                  title: "The Struggle",
+                  description: "Inconsistent leads, competing on price, working 80+ hours",
+                  icon: "😰",
+                  metrics: ["$45K/month", "23% profit", "2-3 leads/week"],
+                  color: "red",
+                  delay: "0s"
+                },
+                {
+                  step: "Day 30",
+                  title: "The System",
+                  description: "Implementing proven frameworks, targeting ideal prospects",
+                  icon: "🎯",
+                  metrics: ["$67K/month", "28% profit", "8-12 leads/week"],
+                  color: "yellow",
+                  delay: "0.5s"
+                },
+                {
+                  step: "Day 60",
+                  title: "The Momentum",
+                  description: "Qualified prospects reaching out, premium pricing accepted",
+                  icon: "🚀",
+                  metrics: ["$98K/month", "35% profit", "15-20 leads/week"],
+                  color: "blue",
+                  delay: "1s"
+                },
+                {
+                  step: "Day 90",
+                  title: "The Success",
+                  description: "Predictable revenue, premium positioning, work-life balance",
+                  icon: "🏆",
+                  metrics: ["$153K/month", "42% profit", "25+ leads/week"],
+                  color: "green",
+                  delay: "1.5s"
+                }
+              ].map((story, index) => (
+                <div 
+                  key={index}
+                  className={`relative group transition-all duration-1000 hover:scale-105`}
+                  style={{animationDelay: story.delay}}
+                >
+                  {/* Timeline Dot */}
+                  <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-8 w-6 h-6 bg-${story.color}-500 rounded-full border-4 border-white shadow-lg z-20 group-hover:scale-125 transition-transform duration-300`}></div>
+                  
+                  {/* Story Card */}
+                  <div className={`bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 mt-8 group-hover:border-${story.color}-200`}>
+                    <div className="text-center mb-4">
+                      <div className="text-3xl mb-2">{story.icon}</div>
+                      <div className={`text-sm font-semibold text-${story.color}-600 mb-1`}>{story.step}</div>
+                      <h3 className="text-xl font-bold text-gray-900">{story.title}</h3>
+                    </div>
+                    
+                    <p className="text-gray-600 text-center mb-6 leading-relaxed">
+                      {story.description}
+                    </p>
+                    
+                    <div className="space-y-2">
+                      {story.metrics.map((metric, metricIndex) => (
+                        <div 
+                          key={metricIndex}
+                          className={`text-center p-2 bg-${story.color}-50 rounded-lg border border-${story.color}-100`}
+                        >
+                          <span className={`font-semibold text-${story.color}-700`}>{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Animated Progress Bar */}
+                    <div className="mt-4">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className={`h-2 bg-gradient-to-r from-${story.color}-400 to-${story.color}-600 rounded-full transition-all duration-2000 ease-out`}
+                          style={{width: `${(index + 1) * 25}%`}}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Your Agency's Transformation Starts Today
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Join 1,247+ agencies who've already made the leap from struggling to scaling. 
+                The only question is: will you be next?
+              </p>
+              <button 
+                onClick={() => scrollToSection('cta-form')}
+                className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 flex items-center justify-center space-x-2 mx-auto group"
+              >
+                <span>Start Your Transformation</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Custom CSS for animations */}
+        <style jsx>{`
+          @keyframes grow {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+          
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          
+          .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+          }
+        `}</style>
+      </section>
+
       {/* Social Proof - Testimonials */}
       <section 
         id="testimonials" 
